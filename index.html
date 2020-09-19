@@ -1,0 +1,192 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Dokdo Mobile</title>
+	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"/>
+	<script src="jquery.mobile/jquery-1.11.1.min.js"></script>
+	<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
+	<!-- 사용자 정의 자바스크립트 파일 -->
+	<script src="dbHandle.js"></script>
+	<script>
+		$(document).ready( function() {
+			// DB 연결
+			openDB();  
+			createTable();   
+			// 이벤트 함수 정의
+			 $('#submit1').click( function() {
+				 insertBook();
+			});
+			$('#cancel1').click( function() {
+				$('#addType1').val('미정').attr('selected', 'selected'); 
+				$('#addType1').selectmenu('refresh');	
+			}); 
+			$('#search4').click( function() {
+				var name = $('#sBookName4').val();
+				selectBook4(name);
+			});
+		});    
+	</script>
+
+<style>
+   li { list-style:none; }
+  .picture { list-style:none; padding:0; margin:0; }
+  .picture li { float:left; width:50%;}
+  .picture li a {display:block; margin:5px; border: 1px }
+  .picture li img { display:block; width:50%;  height:auto;}
+  .picture li img:hover { display:block; width:100%;  height:auto;} 
+</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h1>탐정 소개 앱</h1>
+		</div>
+		<div data-role="content" style="text-align:center">
+				<img src="images/FAK.png" >
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#intro">탐정 소개</a></li>
+				<li><a href="#findview" data-rel="dialog">탐정 신청</a></li>				
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>한국_셜록 홈즈</h1>
+		</div>
+	</div>
+
+	<!-- 탐정 소개 화면 --> 
+	<div data-role="page" id="intro" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>			
+			<h1>한국_셜록 홈즈 소개</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="images/FAK.png">
+				</div>			
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>탐정 이란?</h3>
+					<p>사립탐정(私立探偵)은 의뢰자의 요청에 따라 사건, 사고, 정보 등을 조사하는 민간 조사원이다. "탐정"이란 단어는 일본에서 영어 단어 "Detective", 또는 "Private Investigator"를 한자로 번안한 것이다. "Private Investigator"의 약어인 "PI"를 사용하기도 한다. 한편, 영미권에서는 "Private Eye"라 표현하기도 한다. 영어 Detective는 국가 또는 민간의 사건 조사를 하는 자를 의미하는데, 국가 공무원인 경우에는 형사, 민간인인 경우에는 탐정으로 번역되고 있다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>탐정의 의뢰조사</h3>
+					<p>탐정은 탐문·관찰 등 합법적인 수단으로 ‘특정 사실관계를 파악하거나 관련 자료를 수집하는 직업’이다. 주요 업무는 교통사고나 화재, 보험 사기 등을 조사하는 일부터 기업부정이나 해외도피자를 찾아내는 일까지 다양하다. 사건 해결 기여도를 인정받아 한국을 제외한 경제협력개발기구(OECD) 회원국은 대부분 탐정제도를 도입했다.</p>
+				</div>
+				<div data-role="collapsible" >
+					<h3>탐정 어플이란?</h3>
+					<p>한국특수직능교육재단에 따르면 대표적 탐정 관련 자격증인 PIA민간조사사 자격증 취득자 수는 2020년 상반기에만 547명이 취득했다. 이중 72.4%인 396명이 전·현직 경찰관 출신이었다. 어플 사용자들이 편하고 안정적으로 취득자들을 연결해 주는 어플입니다.</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>한국_셜록 홈즈</h1>
+		</div>		
+	</div>
+	
+	<!-- 의뢰정보 추가 화면 --> 
+	<div data-role="page" id="findview">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
+			<h1>의뢰 정보</h1>
+			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#page1">입력</a></li>
+					<li><a href="#page2">전체검색</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="content">
+			<form name="form1">  
+				<h4>의뢰 내용 입력</h4>
+				<div class="ui-body ui-body-a gap">
+					<label for="addType1" class="select">의뢰 사건 형식:</label>
+					<select name="addType1" id="addType1" data-native-menu="false" data-mini="true" data-inline="true">
+						<option vlaue="의뢰 형식">형식</option>
+						<option value="경제">경제</option>
+						<option value="형사">형사</option>
+						<option value="탈영">탈영</option>
+						<option value="불륜">불륜</option>
+					</select>
+					<label for="AreaType1" class="select">의뢰 사건 지역:</label>
+					<select name="AreaType1" id="AreaType1" data-native-menu="false" data-mini="true" data-inline="true">
+						<option vlaue="지역">지역</option>
+						<option vlaue="서울">서울</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+					</select>
+					<label for="AddName1">의뢰자 명:</label>
+					<input type="text" name="addName1" id="addName1" value="" data-mini="true"/>
+					<label for="AddName1">연락처 번호:</label>
+					<input type="number" name="addPhone1" id="addPhone1" value="" data-mini="true"/>
+				</div>
+				<div class="ui-body">
+					<fieldset class="ui-grid-a">
+						<div class="ui-block-a">
+						  <input type="reset" id="cancel1" value="취소"/>
+						</div>
+						<div class="ui-block-b">
+						  <input type="button" id="submit1" value="추가"/>
+						</div>
+					</fieldset>
+				</div>
+			</form> 
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>사용자 의뢰 내용</h4>
+		</div>
+	</div>
+
+	<!-- 전체 조회 화면 -->
+	<div data-role="page" id="page2">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
+			<h1>도서 정보</h1>
+			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#page1">입력</a></li>
+					<li><a href="#page2">전체검색</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="content">
+			<h3>의뢰 내용 검색</h3>
+			<div class="ui-body ui-body-a gap">				
+				<label for="sBookName4">검색 의뢰명:</label>
+				<input type="search" name="sBookName4" id="sBookName4" value="" data-mini="true" />
+				<label for="bookType4">의뢰 사건 형식:</label>
+				<input type="text" name="bookType4" id="bookType4" value="" data-mini="true"/>
+				<label for="bookName4">의뢰자 명:</label>
+				<input type="text" name="bookName4" id="bookName4" value="" data-mini="true"/>
+			</div>
+			<div class="ui-body">
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a">
+					   <input type="reset" id="cancel4" value="취소"/>
+					</div>
+					<div class="ui-block-b">
+					   <input type="button" id="search4" value="검색"/>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h4>사용자 의뢰 내용</h4>
+		</div>
+	</div>
+</div>	
+</body>
+</html>
