@@ -24,7 +24,7 @@ function createTable() {
      });
  } 
  // 데이터 입력 트랜잭션 실행
- function insertBook(){ 
+ function insertStory(){ 
     db.transaction(function(tr){
   		var type = $('#addType1').val();
   		var name = $('#addName1').val();

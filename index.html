@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Dokdo Mobile</title>
+	<title>Private Eye Mobile</title>
 	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"/>
 	<script src="jquery.mobile/jquery-1.11.1.min.js"></script>
 	<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
@@ -16,16 +16,22 @@
 			createTable();   
 			// 이벤트 함수 정의
 			 $('#submit1').click( function() {
-				 insertBook();
+				 insertStory();
 			});
 			$('#cancel1').click( function() {
 				$('#addType1').val('미정').attr('selected', 'selected'); 
-				$('#addType1').selectmenu('refresh');	
+				$('#addType1').selectmenu('refresh');
 			}); 
 			$('#search4').click( function() {
-				var name = $('#sBookName4').val();
+				var name = $('#sAddName4').val();
 				selectBook4(name);
 			});
+			$('#cancel4').click( function() {
+				$('#sAddName4').val(' ').attr('selected', 'selected');
+				$('#addType4').val(' ').attr('selected', 'selected');
+				$('#addName4').val(' ').attr('selected', 'selected');
+				//$('#sAddName4').selectmenu('refresh');
+			}); 
 		});    
 	</script>
 
@@ -49,7 +55,7 @@
 				<img src="images/FAK.png" >
 			<ul data-role="listview" data-inset="true">
 				<li><a href="#intro">탐정 소개</a></li>
-				<li><a href="#findview" data-rel="dialog">탐정 신청</a></li>				
+				<li><a href="#page1" data-rel="dialog">의뢰 신청</a></li>				
 			</ul>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
@@ -88,8 +94,8 @@
 	</div>
 	
 	<!-- 의뢰정보 추가 화면 --> 
-	<div data-role="page" id="findview">
-		<div data-role="header" data-position="fixed" data-theme="b">
+	<div data-role="page" id="page1">
+		<div data-role="header" data-theme="b">
 			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
 			<h1>의뢰 정보</h1>
 			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
@@ -128,7 +134,7 @@
 					</select>
 					<label for="AddName1">의뢰자 명:</label>
 					<input type="text" name="addName1" id="addName1" value="" data-mini="true"/>
-					<label for="AddName1">연락처 번호:</label>
+					<label for="addPhone1">연락처 번호:</label>
 					<input type="number" name="addPhone1" id="addPhone1" value="" data-mini="true"/>
 				</div>
 				<div class="ui-body">
@@ -165,12 +171,12 @@
 		<div data-role="content">
 			<h3>의뢰 내용 검색</h3>
 			<div class="ui-body ui-body-a gap">				
-				<label for="sBookName4">검색 의뢰명:</label>
-				<input type="search" name="sBookName4" id="sBookName4" value="" data-mini="true" />
-				<label for="bookType4">의뢰 사건 형식:</label>
-				<input type="text" name="bookType4" id="bookType4" value="" data-mini="true"/>
-				<label for="bookName4">의뢰자 명:</label>
-				<input type="text" name="bookName4" id="bookName4" value="" data-mini="true"/>
+				<label for="sAddName4">검색 의뢰명:</label>
+				<input type="search" name="sAddName4" id="sAddName4" value="" data-mini="true" />
+				<label for="addType4">의뢰 사건 형식:</label>
+				<input type="text" name="addType4" id="addType4" value="" data-mini="true"/>
+				<label for="addName4">의뢰자 명:</label>
+				<input type="text" name="addName4" id="addName4" value="" data-mini="true"/>
 			</div>
 			<div class="ui-body">
 				<fieldset class="ui-grid-a">
