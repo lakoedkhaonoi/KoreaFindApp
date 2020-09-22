@@ -88,6 +88,10 @@
 					<h3>탐정 어플이란?</h3>
 					<p>한국특수직능교육재단에 따르면 대표적 탐정 관련 자격증인 PIA민간조사사 자격증 취득자 수는 2020년 상반기에만 547명이 취득했다. 이중 72.4%인 396명이 전·현직 경찰관 출신이었다. 어플 사용자들이 편하고 안정적으로 취득자들을 연결해 주는 어플입니다.</p>
 				</div>
+				<div data-role="collapsible" >
+					<h3>탐정 의뢰 신청</h3>
+					<p>현재 어플에서 의뢰하시는 지역과 연락처를 적어서 신청해 주시면, 빠른 시간안에 해당 사건의 베테랑 탐정을 추천해 드립니다. 저희가 추천해 드리는 베테랑 탐정은 "한국_셜록홈즈"가 보증을 하고 있어서 손해를 보시면 "한국_셜록홈즈"가 손해배상을 보장해 드립니다.</p>
+				</div>
 			</div>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
@@ -160,9 +164,24 @@
 
 		<div data-role="content">
 			<h3>의뢰 내용 검색</h3>
-			<div class="ui-body ui-body-a gap">				
+			<div class="ui-body ui-body-a gap">
+				<label for="sArea" class="select">의뢰 사건 지역:</label>
+				<select name="sArea" id="sArea" data-native-menu="false" data-mini="true" data-inline="true">
+					<option vlaue="지역">지역</option>
+					<option vlaue="서울">서울</option>
+					<option value="경기도">경기도</option>
+					<option value="강원도">강원도</option>
+					<option value="충청북도">충청북도</option>
+					<option value="충청남도">충청남도</option>
+					<option value="경상북도">경상북도</option>
+					<option value="경상남도">경상남도</option>
+					<option value="전라북도">전라북도</option>
+					<option value="전라남도">전라남도</option>
+				</select>
+				<!--
 				<label for="sArea">검색 의뢰 지역명:</label>
 				<input type="search" name="sArea" id="sArea" value="" data-mini="true" />
+				-->
 				<label for="addType4">의뢰 사건 형식:</label>
 				<input type="text" name="addType4" id="addType4" value="" data-mini="true"/>
 				<label for="addName4">의뢰자 명:</label>
