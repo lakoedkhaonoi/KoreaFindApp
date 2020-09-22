@@ -23,13 +23,14 @@
 				$('#addType1').selectmenu('refresh');
 			}); 
 			$('#search4').click( function() {
-				var name = $('#sAddName4').val();
-				selectBook4(name);
+				var area = $('#sArea').val();
+				selectFindStory(area);
 			});
 			$('#cancel4').click( function() {
-				$('#sAddName4').val(' ').attr('selected', 'selected');
+				$('#sArea').val(' ').attr('selected', 'selected');
 				$('#addType4').val(' ').attr('selected', 'selected');
 				$('#addName4').val(' ').attr('selected', 'selected');
+				$('#addPhone4').val(' ').attr('selected', 'selected');
 				//$('#sAddName4').selectmenu('refresh');
 			}); 
 		});    
@@ -55,7 +56,8 @@
 				<img src="images/FAK.png" >
 			<ul data-role="listview" data-inset="true">
 				<li><a href="#intro">탐정 소개</a></li>
-				<li><a href="#page1" data-rel="dialog">의뢰 신청</a></li>				
+				<li><a href="#page1" data-rel="dialog">의뢰 신청</a></li>
+				<li><a href="#page2" data-rel="dialog">의뢰 확인</a></li>
 			</ul>
 		</div>
 		<div data-role="footer" data-position="fixed" data-theme="b">
@@ -99,12 +101,6 @@
 			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
 			<h1>의뢰 정보</h1>
 			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#page1">입력</a></li>
-					<li><a href="#page2">전체검색</a></li>
-				</ul>
-			</div>
 		</div>
 
 		<div data-role="content">
@@ -119,8 +115,8 @@
 						<option value="탈영">탈영</option>
 						<option value="불륜">불륜</option>
 					</select>
-					<label for="AreaType1" class="select">의뢰 사건 지역:</label>
-					<select name="AreaType1" id="AreaType1" data-native-menu="false" data-mini="true" data-inline="true">
+					<label for="areaType1" class="select">의뢰 사건 지역:</label>
+					<select name="areaType1" id="areaType1" data-native-menu="false" data-mini="true" data-inline="true">
 						<option vlaue="지역">지역</option>
 						<option vlaue="서울">서울</option>
 						<option value="경기도">경기도</option>
@@ -132,10 +128,10 @@
 						<option value="전라북도">전라북도</option>
 						<option value="전라남도">전라남도</option>
 					</select>
-					<label for="AddName1">의뢰자 명:</label>
+					<label for="addName1">의뢰자 명:</label>
 					<input type="text" name="addName1" id="addName1" value="" data-mini="true"/>
 					<label for="addPhone1">연락처 번호:</label>
-					<input type="number" name="addPhone1" id="addPhone1" value="" data-mini="true"/>
+					<input type="text" name="addPhone1" id="addPhone1" value="" data-mini="true"/>
 				</div>
 				<div class="ui-body">
 					<fieldset class="ui-grid-a">
@@ -158,25 +154,21 @@
 	<div data-role="page" id="page2">
 		<div data-role="header" data-position="fixed" data-theme="b">
 			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
-			<h1>도서 정보</h1>
+			<h1>의뢰 조회 정보</h1>
 			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#page1">입력</a></li>
-					<li><a href="#page2">전체검색</a></li>
-				</ul>
-			</div>
 		</div>
 
 		<div data-role="content">
 			<h3>의뢰 내용 검색</h3>
 			<div class="ui-body ui-body-a gap">				
-				<label for="sAddName4">검색 의뢰명:</label>
-				<input type="search" name="sAddName4" id="sAddName4" value="" data-mini="true" />
+				<label for="sArea">검색 의뢰 지역명:</label>
+				<input type="search" name="sArea" id="sArea" value="" data-mini="true" />
 				<label for="addType4">의뢰 사건 형식:</label>
 				<input type="text" name="addType4" id="addType4" value="" data-mini="true"/>
 				<label for="addName4">의뢰자 명:</label>
 				<input type="text" name="addName4" id="addName4" value="" data-mini="true"/>
+				<label for="addPhone4">의뢰자 연락처:</label>
+				<input type="text" name="addPhone4" id="addPhone4" value="" data-mini="true"/>
 			</div>
 			<div class="ui-body">
 				<fieldset class="ui-grid-a">
