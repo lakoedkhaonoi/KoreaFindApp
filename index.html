@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Private Eye Mobile</title>
+	<title>PIA Mobile</title>
 	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"/>
 	<script src="jquery.mobile/jquery-1.11.1.min.js"></script>
 	<script src="jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
@@ -103,7 +103,7 @@
 	<div data-role="page" id="page1">
 		<div data-role="header" data-theme="b">
 			<a href="#" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
-			<h1>의뢰 정보</h1>
+			<h1>의뢰 신청</h1>
 			<a href="#home" data-icon="home" data-iconpos="notext">Home</a>
 		</div>
 
@@ -111,14 +111,6 @@
 			<form name="form1">  
 				<h4>의뢰 내용 입력</h4>
 				<div class="ui-body ui-body-a gap">
-					<label for="addType1" class="select">의뢰 사건 형식:</label>
-					<select name="addType1" id="addType1" data-native-menu="false" data-mini="true" data-inline="true">
-						<option vlaue="의뢰 형식">형식</option>
-						<option value="경제">경제</option>
-						<option value="형사">형사</option>
-						<option value="탈영">탈영</option>
-						<option value="불륜">불륜</option>
-					</select>
 					<label for="areaType1" class="select">의뢰 사건 지역:</label>
 					<select name="areaType1" id="areaType1" data-native-menu="false" data-mini="true" data-inline="true">
 						<option vlaue="지역">지역</option>
@@ -131,7 +123,26 @@
 						<option value="경상남도">경상남도</option>
 						<option value="전라북도">전라북도</option>
 						<option value="전라남도">전라남도</option>
+						<option value="제주도">제주도</option>
 					</select>
+					<label for="addType1" class="select">의뢰 사건 형식:</label>
+					<select name="addType1" id="addType1" data-native-menu="false" data-mini="true" data-inline="true">
+						<option vlaue="의뢰형식">의뢰형식</option>
+						<option value="미제사건">미제 사건</option>
+						<option value="보험사기">보험 사기</option>
+						<option value="의료사고">의료 사고</option>
+						<option value="보험관련">보험 관련</option>
+						<option value="보험관련">교통 사고</option>
+						<option value="토지수용">토지 수용</option>
+						<option value="기업비리">기업 비리</option>
+						<option value="자료수집">자료 수집</option>
+						<option value="실종.가출">실종.가출</option>
+						<option value="지적재산권">지적재산권</option>						
+						<option value="부동산사건">부동산 사건</option>
+						<option value="사이버범죄">사이버 범죄</option>
+						<option value="민.형사사건">민.형사 사건</option>
+					</select>
+					
 					<label for="addName1">의뢰자 명:</label>
 					<input type="text" name="addName1" id="addName1" value="" data-mini="true"/>
 					<label for="addPhone1">연락처 번호:</label>
@@ -177,6 +188,7 @@
 					<option value="경상남도">경상남도</option>
 					<option value="전라북도">전라북도</option>
 					<option value="전라남도">전라남도</option>
+					<option value="제주도">제주도</option>
 				</select>
 				<!--
 				<label for="sArea">검색 의뢰 지역명:</label>
